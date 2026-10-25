@@ -112,3 +112,18 @@ html,body{margin:0;height:100%;overflow:hidden;overscroll-behavior:none}
 @media (max-width:375px){
   #screen-survey .hint{font-size:15px}
 }
+
+/* Мобильные браузеры (iOS Safari): белая полоска под панелью — фон html/body и высота экрана */
+@media (max-width:768px){
+  html{background-color:#302421;height:-webkit-fill-available}
+  body{background-color:#302421;min-height:100dvh;min-height:-webkit-fill-available}
+  .app-screen{
+    min-height:100dvh;
+    min-height:-webkit-fill-available;
+    padding-bottom:env(safe-area-inset-bottom,0px)
+  }
+  #screen-survey{
+    background-color:#1e1d23;
+    background-attachment:scroll
+  }
+}
