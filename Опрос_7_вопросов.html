@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>Опрос для психологов — 7 вопросов</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>:root{--bg:#17171b;--paper:#f9f2ee;--peach:#f7bda3;--peach2:#e9a48b;--muted:#d4c8c6;--line:rgba(255,210,189,.25);--panel:rgba(58,49,52,.91);--field:rgba(80,75,82,.68);--error:#ffcfbc}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;color:var(--paper);font-family:Manrope,Arial,sans-serif;background:radial-gradient(ellipse at 88% 7%,rgba(218,143,109,.27),transparent 33%),radial-gradient(ellipse at 0% 72%,rgba(139,98,84,.27),transparent 46%),linear-gradient(145deg,#222126 0%,#393037 53%,#1b1c22 100%);background-attachment:fixed}
+button,textarea,input{font:inherit}
+.top{width:min(920px,calc(100% - 32px));margin:16px auto 0;padding:15px 23px;border:1px solid var(--line);border-radius:18px;background:rgba(30,29,34,.72);backdrop-filter:blur(15px);display:flex;align-items:center;justify-content:space-between;gap:10px}
+.brand{font-size:16px;font-weight:800}
+.top-label{font-size:13px;color:var(--muted)}
+.shell{width:min(760px,calc(100% - 28px));margin:auto;padding:28px 0 55px}
+.screen{display:none;animation:appear .25s ease}
+.screen.active{display:block}
+@keyframes appear{from{opacity:.3;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.eyebrow{font-size:13px;letter-spacing:.18em;font-weight:800;color:var(--peach);text-transform:uppercase;margin:0 0 14px}
+h1,h2,h3{letter-spacing:-.03em}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(43px,7vw,69px);font-weight:600;line-height:1.06;margin:0 0 19px}
+h2{font-family:Manrope,Arial,sans-serif;font-size:clamp(23px,3.7vw,29px);line-height:1.4;font-weight:800;margin:0}
+.accent{color:var(--peach)}
+.card{background:linear-gradient(150deg,rgba(85,64,65,.93),rgba(45,43,50,.97) 72%);border:1px solid rgba(255,205,180,.32);border-radius:27px;padding:29px 30px 27px;box-shadow:0 20px 65px rgba(0,0,0,.21)}
+.progress-head{display:flex;align-items:center;justify-content:space-between;gap:12px;color:#f6c4aa;font-size:14px;font-weight:800;letter-spacing:.06em;margin:0 0 13px}
+.progress{height:8px;background:rgba(255,255,255,.18);border-radius:10px;overflow:hidden;margin-bottom:24px}
+.progress-fill{height:100%;background:linear-gradient(90deg,#eaa98e,#ffd0b6);border-radius:10px}
+.qheading{display:flex;align-items:flex-start;gap:14px}
+.qbadge{width:42px;height:42px;border-radius:50%;flex:0 0 42px;display:grid;place-items:center;background:linear-gradient(135deg,#ffdbc3,#ecab91);color:#31252a;font-size:21px;font-weight:800;box-shadow:0 3px 16px rgba(243,165,128,.13)}
+.hint{margin:20px 0 20px 56px;color:#ead6d0;font-size:16px;line-height:1.6}
+.hint:before{content:"✎";color:var(--peach);margin-right:9px;font-size:19px}
+.field{display:block;width:100%;min-height:126px;padding:17px 18px;border:1px solid rgba(255,221,206,.42);border-radius:17px;background:rgba(79,83,94,.58);color:white;font-size:17px;line-height:1.6;resize:vertical;outline:none}
+.field::placeholder{color:#c9c3c6}
+.field:focus,.option:focus-within{border-color:#ffd0b6;box-shadow:0 0 0 3px rgba(249,189,160,.16)}
+.options{display:grid;gap:10px}
+.option{display:flex;align-items:center;gap:13px;min-height:57px;padding:12px 16px;background:rgba(87,81,88,.56);border:1px solid rgba(255,221,206,.24);border-radius:15px;cursor:pointer;font-size:17px;line-height:1.45}
+.option input{width:21px;height:21px;accent-color:var(--peach);flex:0 0 auto}
+.option:has(input:checked){background:rgba(247,189,163,.15);border-color:var(--peach)}
+.followup{margin-top:24px;padding:22px 19px 20px;border:1px solid rgba(255,208,182,.28);border-radius:18px;background:rgba(225,160,137,.1)}
+.followup h3{font-size:18px;line-height:1.5;margin:0 0 14px;font-weight:700}
+.followup h3:before{content:"✎";color:var(--peach);margin-right:10px}
+.followup .field{min-height:110px}
+.followup>div+div{margin-top:23px}
+.actions{display:flex;justify-content:space-between;gap:12px;margin-top:25px}
+.btn{min-height:55px;padding:13px 23px;border:1px solid var(--peach);border-radius:16px;background:linear-gradient(115deg,#ffd3bd,#f6b79d);color:#27242a;font-size:17px;font-weight:800;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.12)}
+.btn:hover{filter:brightness(1.04)}
+.btn.secondary{background:transparent;color:#f9d1bf;box-shadow:none}
+.btn:focus-visible{outline:3px solid white;outline-offset:3px}
+.error{display:none;color:#ffe0d5;background:rgba(113,38,39,.46);border:1px solid rgba(255,205,187,.66);padding:12px 15px;border-radius:12px;font-size:15px;font-weight:700;margin-top:16px}
+.error.visible{display:block}
+.note{font-size:13px!important;color:var(--muted)}
+.footer{text-align:center;font-size:12px;color:var(--muted);padding:0 0 30px}
+@media (max-width:600px){.top{width:calc(100% - 20px);margin-top:10px;padding:12px 14px}.brand{font-size:14px}.top-label{font-size:11px}.shell{width:calc(100% - 20px);padding:18px 0 40px}.card{padding:22px 16px;border-radius:22px}.qbadge{width:36px;height:36px;flex-basis:36px;font-size:18px}.qheading{gap:11px}h2{font-size:23px;line-height:1.4}.hint{margin:17px 0 19px 47px;font-size:16px}.option{font-size:17px;min-height:58px}.field{font-size:17px}.followup{padding:17px 13px}.followup h3{font-size:18px}.btn{font-size:16px;min-height:54px;padding:12px 15px}}
+@media (max-width:375px){.hint{margin-left:0}}
+body{background:radial-gradient(ellipse at 92% 5%,rgba(212,142,108,.32),transparent 34%),radial-gradient(ellipse at 8% 100%,rgba(151,100,80,.21),transparent 45%),linear-gradient(140deg,#211e22,#3b3031 48%,#1e1d23);}
+.top{background:rgba(38,31,34,.78);border-color:rgba(255,202,174,.22)}
+.shell{width:min(790px,calc(100% - 24px));padding-top:23px}
+.card{background:linear-gradient(132deg,rgba(112,77,71,.95),rgba(48,43,48,.98) 73%);border-color:rgba(255,202,175,.48);box-shadow:0 20px 56px rgba(16,11,14,.32)}
+.progress-head{font-size:15px}
+.progress{height:10px;background:rgba(238,214,207,.2)}
+.qbadge{background:linear-gradient(140deg,#ffdcc7,#f2ad8f)}
+.hint{padding:15px 17px;margin:23px 0 19px 56px;background:rgba(233,178,151,.12);border:1px solid rgba(255,203,178,.18);border-radius:14px;color:#f2dfd8}
+.hint:before{font-size:22px}
+.field{background:rgba(77,86,99,.66);border-color:rgba(255,215,195,.55);min-height:135px}
+.option{background:rgba(93,81,84,.65);border-color:rgba(255,211,187,.28)}
+.followup{background:rgba(237,170,143,.12);border-color:rgba(255,208,184,.32)}
+.btn{background:linear-gradient(105deg,#ffdcc7,#f6af94);border-color:#f8bea3}
+.actions .btn:not(.secondary){flex:1}
+@media (max-width:600px){.card{padding:22px 15px}.hint{margin:20px 0 18px;padding:14px 13px;font-size:16px}.shell{width:calc(100% - 18px)}.qheading h2{font-size:23px}.btn{font-size:16px}}
+.hero-signature{position:relative;z-index:2;text-align:right;font-size:13px;letter-spacing:.08em;color:#e9c6b5;margin-top:25px}
+.card .qheading{margin-bottom:20px}
+.card .hint{margin:0 0 20px;width:100%;padding:15px 18px;background:rgba(220,164,143,.12);border:1px solid rgba(255,207,184,.25);border-radius:16px;color:#f0d9ce}
+.card .hint:before{display:inline-block;margin-right:12px}
+.card .field,.card .options,.card .followup,.card .actions,.card .hint{width:100%;max-width:none;box-sizing:border-box}
+.card .actions{display:grid;grid-template-columns:minmax(95px,0.24fr) minmax(0,1fr);gap:14px}
+.card .actions .btn{width:100%;margin:0}
+.card .followup{margin-left:0;margin-right:0}
+@media (max-width:600px){.card .hint{padding:14px 15px;margin-bottom:18px}.card .actions{grid-template-columns:minmax(84px,.28fr) minmax(0,1fr);gap:10px}}</style>
+<style></style><style></style><style></style><style>#completion-note{margin:20px 0 0;padding:16px;border:1px solid rgba(255,208,182,.4);border-radius:14px;background:rgba(247,189,163,.12);font-size:16px;line-height:1.6}#completion-note[hidden]{display:none}</style></head>
+<body>
+<header class="top"><div class="brand">Мария Коренева</div><div class="top-label">Опрос для психологов</div></header>
+<main class="shell">
+
+<form id="survey" novalidate="">
+<section class="screen active" data-step="0"><div class="card"><div class="progress-head"><span>ВОПРОС 1 ИЗ 7</span><span>14%</span></div><div class="progress"><div class="progress-fill" style="width:14.29%"></div></div><div class="qheading"><span aria-hidden="true" class="qbadge">1</span><h2>Какие задачи в вашей работе психолога, в том числе связанные с продвижением своих услуг, помимо проведения консультаций, даются вам сложнее всего или отнимают больше всего времени?</h2></div><p class="hint">Напишите всё, что приходит вам в голову. По возможности приведите конкретный пример.</p><textarea aria-label="Ответ на вопрос 1" class="field" name="difficult_tasks" placeholder="Ваш ответ"></textarea><div class="error" role="alert"></div><div class="actions"><button class="btn" data-next="" type="button">Далее →</button></div></div></section>
+<section class="screen" data-step="1"><div class="card"><div class="progress-head"><span>ВОПРОС 2 ИЗ 7</span><span>29%</span></div><div class="progress"><div class="progress-fill" style="width:28.57%"></div></div><div class="qheading"><span aria-hidden="true" class="qbadge">2</span><h2>Что вы уже пробовали делать, чтобы облегчить себе работу или продвижение и сэкономить время? Что из этого получилось, а что нет?</h2></div><p class="hint">Напишите всё, что приходит вам в голову. По возможности приведите конкретный пример.</p><textarea aria-label="Ответ на вопрос 2" class="field" name="attempts" placeholder="Ваш ответ"></textarea><div class="error" role="alert"></div><div class="actions"><button class="btn secondary" data-back="" type="button">Назад</button><button class="btn" data-next="" type="button">Далее →</button></div></div></section>
+<section class="screen" data-step="2"><div class="card"><div class="progress-head"><span>ВОПРОС 3 ИЗ 7</span><span>43%</span></div><div class="progress"><div class="progress-fill" style="width:42.86%"></div></div><div class="qheading"><span aria-hidden="true" class="qbadge">3</span><h2>Какие рабочие задачи или задачи по продвижению вы хотели бы передать помощнику, если бы была такая возможность?</h2></div><p class="hint">Напишите всё, что приходит вам в голову. По возможности приведите конкретный пример.</p><textarea aria-label="Ответ на вопрос 3" class="field" name="delegate" placeholder="Ваш ответ"></textarea><div class="error" role="alert"></div><div class="actions"><button class="btn secondary" data-back="" type="button">Назад</button><button class="btn" data-next="" type="button">Далее →</button></div></div></section>
+<section class="screen" data-step="3"><div class="card"><div class="progress-head"><span>ВОПРОС 4 ИЗ 7</span><span>57%</span></div><div class="progress"><div class="progress-fill" style="width:57.14%"></div></div><div class="qheading"><span aria-hidden="true" class="qbadge">4</span><h2>Пользуетесь ли вы сейчас нейросетями в своей работе?</h2></div><p class="hint">Выберите один вариант ответа.</p><div class="options"><label class="option"><input name="neural_use" type="radio" value="Нет, вообще не пользуюсь"/>Нет, вообще не пользуюсь</label><label class="option"><input name="neural_use" type="radio" value="Пробовал(а) несколько раз"/>Пробовал(а) несколько раз</label><label class="option"><input name="neural_use" type="radio" value="Иногда пользуюсь"/>Иногда пользуюсь</label><label class="option"><input name="neural_use" type="radio" value="Пользуюсь регулярно"/>Пользуюсь регулярно</label><label class="option"><input name="neural_use" type="radio" value="Практически каждый день"/>Практически каждый день</label></div><div class="followup" hidden="" id="neural-followup"><div hidden="" id="neural-tasks-block"><h3>Если вы уже пользуетесь нейросетями, для каких рабочих задач или задач по продвижению вы их применяете?</h3><textarea aria-label="Для каких задач применяете нейросети" class="field" name="neural_tasks" placeholder="Ваш ответ"></textarea></div><div id="neural-barriers-block"><h3 id="neural-barriers-label">Что мешает вам начать пользоваться нейросетями или использовать их чаще?</h3><textarea aria-label="Что мешает пользоваться нейросетями" class="field" name="neural_barriers" placeholder="Ваш ответ"></textarea></div></div><div class="error" role="alert"></div><div class="actions"><button class="btn secondary" data-back="" type="button">Назад</button><button class="btn" data-next="" type="button">Далее →</button></div></div></section>
+<section class="screen" data-step="4"><div class="card"><div class="progress-head"><span>ВОПРОС 5 ИЗ 7</span><span>71%</span></div><div class="progress"><div class="progress-fill" style="width:71.43%"></div></div><div class="qheading"><span aria-hidden="true" class="qbadge">5</span><h2>Ведёте ли вы профессиональные соцсети?</h2></div><p class="hint">Выберите один вариант ответа.</p><div class="options"><label class="option"><input name="social_use" type="radio" value="Да, веду регулярно"/>Да, веду регулярно</label><label class="option"><input name="social_use" type="radio" value="Да, но публикую редко или нерегулярно"/>Да, но публикую редко или нерегулярно</label><label class="option"><input name="social_use" type="radio" value="Нет, не веду"/>Нет, не веду</label></div><div class="followup" hidden="" id="social-followup"><h3 id="social-prompt"></h3><textarea aria-label="Уточнение о соцсетях" class="field" name="social_details" placeholder="Ваш ответ"></textarea></div><div class="error" role="alert"></div><div class="actions"><button class="btn secondary" data-back="" type="button">Назад</button><button class="btn" data-next="" type="button">Далее →</button></div></div></section>
+<section class="screen" data-step="5"><div class="card"><div class="progress-head"><span>ВОПРОС 6 ИЗ 7</span><span>86%</span></div><div class="progress"><div class="progress-fill" style="width:85.71%"></div></div><div class="qheading"><span aria-hidden="true" class="qbadge">6</span><h2>Представьте, что нейросеть может выполнить за вас одну рабочую задачу или задачу по продвижению. Что бы вы ей поручили в первую очередь?</h2></div><p class="hint">Напишите всё, что приходит вам в голову. По возможности приведите конкретный пример.</p><textarea aria-label="Ответ на вопрос 6" class="field" name="dream_task" placeholder="Ваш ответ"></textarea><div class="error" role="alert"></div><div class="actions"><button class="btn secondary" data-back="" type="button">Назад</button><button class="btn" data-next="" type="button">Далее →</button></div></div></section>
+<section class="screen" data-step="6"><div class="card"><div class="progress-head"><span>ВОПРОС 7 ИЗ 7</span><span>100%</span></div><div class="progress"><div class="progress-fill" style="width:100.00%"></div></div><div class="qheading"><span aria-hidden="true" class="qbadge">7</span><h2>Чему вам хотелось бы научиться с помощью нейросетей?</h2></div><p class="hint">Напишите всё, что приходит вам в голову, даже если сейчас вы не знаете, возможно ли это.</p><textarea aria-label="Ответ на вопрос 7" class="field" name="learning" placeholder="Ваш ответ"></textarea><div class="error" role="alert"></div><div class="actions"><button class="btn secondary" data-back="" type="button">Назад</button><button class="btn" data-next="" type="button">Отправить ответы →</button></div></div><p aria-live="polite" hidden="" id="completion-note" role="status">Все вопросы заполнены. Для отправки ответов необходимо подключить обработчик в Cursor.</p></section>
+</form>
+
+</main>
+<script>(()=>{'use strict';
+const screens=[...document.querySelectorAll('[data-step]')],form=document.getElementById('survey');let current=0;
+function show(n){screens.forEach((s,i)=>s.classList.toggle('active',i===n));current=n;window.scrollTo({top:0,behavior:'instant'});}
+function val(name){const e=form.elements.namedItem(name);if(!e)return '';if(e instanceof RadioNodeList)return e.value||'';return e.value.trim();}
+function refresh(){const nu=val('neural_use'),used=!!nu&&nu!=='Нет, вообще не пользуюсь';document.getElementById('neural-followup').hidden=!nu;document.getElementById('neural-tasks-block').hidden=!used;document.getElementById('neural-barriers-label').textContent=used?'Что мешает вам использовать нейросети чаще?':'Что мешает вам начать пользоваться нейросетями?';const social=val('social_use');document.getElementById('social-followup').hidden=!social;document.getElementById('social-prompt').textContent=social==='Нет, не веду'?'Что мешает вам начать вести профессиональные соцсети?':social==='Да, но публикую редко или нерегулярно'?'Что мешает вам публиковать материалы регулярно?':'С какими трудностями вы чаще всего сталкиваетесь при ведении соцсетей?';}
+function valid(n){const s=screens[n],error=s.querySelector('.error');const required=['difficult_tasks','attempts','delegate','neural_use','social_use','dream_task','learning'];let missing=!val(required[n])?required[n]:null;if(n===3&&val('neural_use')){if(val('neural_use')!=='Нет, вообще не пользуюсь'&&!val('neural_tasks'))missing=missing||'neural_tasks';if(!val('neural_barriers'))missing=missing||'neural_barriers';}if(n===4&&val('social_use')&&!val('social_details'))missing=missing||'social_details';error.textContent=missing?'Пожалуйста, ответьте на вопрос, чтобы продолжить.':'';error.classList.toggle('visible',!!missing);if(missing){const field=s.querySelector(`[name="${missing}"]`);if(field)field.focus();}return !missing;}
+document.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>{if(!valid(current))return;if(current===screens.length-1){document.getElementById('completion-note').hidden=false;}else show(current+1);}));
+document.querySelectorAll('[data-back]').forEach(b=>b.addEventListener('click',()=>{if(current>0)show(current-1);}));
+document.querySelectorAll('input[type="radio"]').forEach(r=>r.addEventListener('change',()=>{refresh();r.closest('.screen').querySelector('.error').classList.remove('visible');}));
+document.querySelectorAll('textarea').forEach(t=>t.addEventListener('input',()=>{t.closest('.screen').querySelector('.error').classList.remove('visible');}));
+form.addEventListener('submit',e=>e.preventDefault());refresh();show(0);
+})();</script>
+</body></html>

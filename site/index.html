@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>Опрос для психологов</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+
+<div aria-hidden="false" class="app-screen active" id="screen-cover">
+<main class="page page-cover">
+<img alt="Обложка опроса для психологов" class="photo" src="assets/cover.jpg"/>
+<div aria-label="Сведения об опросе" class="badges">
+<div class="badge">
+<svg viewBox="0 0 32 32"><rect height="24" rx="4" width="22" x="5" y="5"/><path d="M11 3h10v5H11zM10 15l3 3 5-6M10 24h12"/></svg>
+<span>10 вопросов</span>
+</div>
+<div class="badge">
+<svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="13"/><path d="M16 7v10l7 4"/></svg>
+<span>10–15 минут</span>
+</div>
+<div class="badge">
+<svg viewBox="0 0 32 32"><path d="M16 3l12 5v9c0 7-5 11-12 14C9 28 4 24 4 17V8zM10 17l4 4 8-9"/></svg>
+<span>Анонимно</span>
+</div>
+</div>
+<button aria-label="Начать опрос" class="hotspot" id="btn-start" type="button"></button>
+</main>
+</div>
+
+<div aria-hidden="true" class="app-screen" id="screen-survey">
+<header class="top">
+<div class="brand">Мария Коренева</div>
+<div class="top-label">Опрос для психологов</div>
+</header>
+<main class="shell">
+<form id="survey" novalidate="">
+<div id="question-mount"></div>
+</form>
+</main>
+</div>
+
+<div aria-hidden="true" class="app-screen" id="screen-final">
+<main class="page page-final">
+<button aria-label="Забрать подарок" class="hotspot" id="btn-gift" title="Забрать подарок" type="button"></button>
+</main>
+<div aria-live="polite" class="gift-toast" hidden="" id="gift-toast" role="status"></div>
+</div>
+
+<script src="survey-config.js"></script>
+<script>
+(function () {
+  var cfg = window.SURVEY_CONFIG;
+  document.querySelector('.brand').textContent = cfg.brand.name;
+  document.querySelector('.top-label').textContent = cfg.brand.label;
+})();
+</script>
+<script src="script.js"></script>
+</body>
+</html>
